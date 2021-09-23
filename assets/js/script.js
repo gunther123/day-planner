@@ -38,12 +38,27 @@ var timeBlocksArr = [
     },
 ];
 
+
+
 //Render the schedule to the page
 function renderPage(){
     //Get all timeblocks and tasks
     const timeBlocks = getLocalStorage();
-    //Reference to where the container is in the html
-    const timeContainer = $(".container");
+    //Container for html elements
+    let timeBlock = "";
+    //Count variable for timeBlocks array iteration 
+    let index = 0;
+
+    timeBlocks.forEach((block) =>{
+        //Reference to each hour in array
+        const time = block.hour;
+        //Reference to setting styling of text area
+        const elClassColor = "present";
+        //Reference to task for each hour from array
+        const taskString = block.task;
+        //Variable containing full HTML elements for each block
+        const blockHTMLTemplate = `<form class="row time-block"><div class="col-2 hour">${time}</div><textarea id="text-area-${index}" class="col-9 ${elClassColor}">${taskString}</textarea><button id="save-button${index}" dataAttr="save-button${index}" class="col-1 saveBtn"><i dataAttr="save-button${index}" class="far fa-save fa-lg"></i></button></form>`;
+    })
 }
 
 
