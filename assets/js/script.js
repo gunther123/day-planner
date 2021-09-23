@@ -58,7 +58,13 @@ function renderPage(){
         const taskString = block.task;
         //Variable containing full HTML elements for each block
         const blockHTMLTemplate = `<form class="row time-block"><div class="col-2 hour">${time}</div><textarea id="text-area-${index}" class="col-9 ${elClassColor}">${taskString}</textarea><button id="save-button${index}" dataAttr="save-button${index}" class="col-1 saveBtn"><i dataAttr="save-button${index}" class="far fa-save fa-lg"></i></button></form>`;
-    })
+
+        timeBlock+= blockHTMLTemplate;
+        console.log(timeBlock);
+        index++;
+    });
+
+    $("#container").html(timeBlock);
 }
 
 
