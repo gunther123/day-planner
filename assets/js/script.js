@@ -65,7 +65,8 @@ function renderPage(){
     });
 
     $("#container").html(timeBlock);
-}
+
+};
 
 
 function getLocalStorage(){
@@ -76,7 +77,12 @@ function getLocalStorage(){
         timeBlocks = timeBlocksArr;
     }
     return timeBlocks;
-}
+};
+
+function getDate(){
+    var currentDate = moment().format("dddd, MMMM Do");
+    $("#current-day").text(currentDate);
+};
 
 renderPage();
 
