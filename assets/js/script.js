@@ -1,5 +1,5 @@
 //Add Variables for full Workday Schedule
-var scheduleBlocksArr = [
+var timeBlocksArr = [
     {
         hour: "9:00 AM",
         task: ""
@@ -43,4 +43,25 @@ var scheduleBlocksArr = [
         hour: "5:00 PM",
         task: ""
     },
-]
+];
+
+
+//Render the schedule to the page
+//Reference to where the container is in the html
+
+function renderPage(){
+    const timeBlocks = getLocalStorage();
+    const timeContainer = $(".container");
+}
+
+
+function getLocalStorage(){
+    timeBlocks = JSON.parse(localStorage.getItem("blocks"));
+    if (!timeBlocks){
+        timeBlocks = timeBlocksArr;
+    }
+    return timeBlocks;
+}
+
+renderPage();
+
