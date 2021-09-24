@@ -62,6 +62,17 @@ function renderPage(){
     });
 
     $("#container").html(timeBlock);
+    //Get reference to all Button Elements
+    const buttonGroup = document.getElementsByClassName("saveBtn");
+    //Creating array from buttonGroup Elements
+    var saveButtons = Array.prototype.slice.call(buttonGroup);
+
+    //Create click event listeners for all save buttons
+    saveButtons.forEach((button) => {
+    if (typeof button === "object") {
+      document.getElementById(button.id).addEventListener("click", saveTasks);
+    }
+  });
 
 };
 
@@ -82,7 +93,6 @@ function hasTimePassed(time){
         return "future";
     }
 };
-
 
 function getLocalStorage(){
     //Get Stored timeblocks and tasks
