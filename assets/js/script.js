@@ -38,8 +38,6 @@ var timeBlocksArr = [
     },
 ];
 
-
-
 //Render the schedule to the page
 function renderPage(){
     //Get all timeblocks and tasks
@@ -53,19 +51,36 @@ function renderPage(){
         //Reference to each hour in array
         const time = block.hour;
         //Reference to setting styling of text area
-        const elClassColor = "present";
+        const elClassColor = hasTimePassed(time);
         //Reference to task for each hour from array
         const taskString = block.task;
         //Variable containing full HTML elements for each block
         const blockHTMLTemplate = `<form class="row time-block"><div class="col-2 hour">${time}</div><textarea id="text-area-${index}" class="col-9 ${elClassColor}">${taskString}</textarea><button id="save-button${index}" dataAttr="save-button${index}" class="col-1 saveBtn"><i dataAttr="save-button${index}" class="far fa-save fa-lg"></i></button></form>`;
 
         timeBlock+= blockHTMLTemplate;
-        console.log(timeBlock);
         index++;
     });
 
     $("#container").html(timeBlock);
 
+};
+
+//Compare current time with schedule blocks to change color of text area
+function hasTimePassed(time){
+    //Time of schedule block from array
+    const timeParsed = moment(time, "hh:mm A").hours();
+    //Current time
+    let currentDateTime = moment().hours();
+
+    if (timeParsed < currentDateTime){
+        return "past";
+    }
+    else if (timeParsed === currentDateTime){
+        return "present";
+    }
+    else if (timeParsed > currentDateTime){
+        return "future";
+    }
 };
 
 
@@ -85,4 +100,5 @@ function getDate(){
 };
 
 renderPage();
+getDate();
 
