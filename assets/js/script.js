@@ -66,7 +66,9 @@ function renderPage(){
         index++;
     });
 
+    //Add all time blocks in order to the container div
     $("#container").html(timeBlock);
+
     //Get reference to all Button Elements
     const buttonGroup = document.getElementsByClassName("saveBtn");
 
@@ -121,7 +123,7 @@ function saveTasks(e) {
     const previousTasks = getLocalStorage();
 
     //Get current button number
-    const buttonValueNumberString = e.srcElement
+    const buttonValueNumberString = e.target
       .getAttribute("dataAttr")
       .split("")[11];
 
@@ -140,7 +142,9 @@ function saveTasks(e) {
 
 //Get and set current date in header
 function getDate(){
+    //Set variable with current date
     var currentDate = moment().format("dddd, MMMM Do");
+    //Add date to header p element
     $("#current-day").text(currentDate);
 };
 
