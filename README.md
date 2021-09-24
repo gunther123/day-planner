@@ -5,9 +5,9 @@ A website that allows you to schedule out your workday with To-dos during a spec
 
 The website will always display the current date and change each hour block to a different color dependent on if the time is in the past, present, or future!
 
-Gray = Past
-Red = Present
-Green = Future
+* Gray = Past
+* Red = Present
+* Green = Future
 
 ## Built With
 * HTML
